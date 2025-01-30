@@ -6,7 +6,6 @@ import { NavBar } from "./components/navbar"
 
 
 function App() {
-
   return (
    
     <Box minH={'100vh'} bg={useColorModeValue("gray.100","gray.800")}>
