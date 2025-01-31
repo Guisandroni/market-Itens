@@ -7,7 +7,7 @@ export function NavBar() {
   return (
 
 
-    <Container maxWidth={"1140px"} px={4} >
+    <Container maxWidth={"1140px"} px={4} p={10} >
       <Flex
         h={16}
         justifyContent={"space-between"}
@@ -19,18 +19,18 @@ export function NavBar() {
       > 
       <Link to={"/"}>
         <Text
-          bgGradient="linear(to-r, #4fc2ca, #46699e)"
+          bgGradient="linear(to-r, #7f99e2, #2d80ce)"
           bgClip="text"
-          fontSize={{ base: "22", sm: "28" }}
+          fontSize={{ base: "22", sm: "40" }}
           fontWeight="extrabold"
           textTransform={"uppercase"}
         >
-         Market Shop
+        Loja de Produtos 🛒
         </Text>
         </Link>
         <HStack spacing={2} alignItems={"center"}>
           <Link to={'/create'}>
-            <Button><PlusSquareIcon fontSize={20} /></Button>
+            <Button><PlusSquareIcon fontSize={22} /></Button>
           </Link>
 
           <Link to={'/'}>

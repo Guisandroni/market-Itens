@@ -48,13 +48,20 @@ export function Home(){
             </SimpleGrid>
 
             {produtos.length=== 0 &&(
-                <><Text fontSize='xl' textAlign={'center'} fontWeight={'bold'} color='gray.500'>
-                        Sem produtos
-                    </Text><Link to={'/create'}>
-                            <Text color='blue.500' _hover={{ textDecoration: 'underline' }}>
+             
+                
+                <Text fontSize='2xl' mb={4} textAlign={'center'} fontWeight={'bold'} color='gray.600' >
+                        Sem produtos 😢
+
+                        <Link to={'/create'} >
+                            <Text fontSize='2xl' textDecoration='none' color='blue.500' _hover={{ textDecoration: 'underline' }}>
                                 Crie um Produto
                             </Text>
-                        </Link></>
+                        </Link>
+                    </Text>
+                    
+                        
+                     
             )}
             </VStack>
         </Container>

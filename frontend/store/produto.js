@@ -37,6 +37,24 @@ export const useProdutoStore = create ((set) => ({
         if(!data.success) return {success: false, message: data.message}
         set (state=> ({produtos: state.produtos.filter(produto => produto._id !==pid)}))
         return {success: true, message: data.message}
+    },
+
+    updateProduto: async (pid, updatedProduto) =>{
+        const rest = await fetch(`/api/produtos/${pid}`,{
+            method:'PUT',
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify(updatedProduto),
+        })
+
+        const data = await rest.json()
+        if(!data.success) return {success:false, message: data.message}
+        set ((state)=> ({
+            produtos: state.produtos.map((produto) => (produto._id === pid ? {... produto,... data.data }: produto))
+        }) )
+
+        return {success: true, message: data.message}
     }
 })
 )

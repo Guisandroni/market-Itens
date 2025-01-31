@@ -41,13 +41,13 @@ export function CreatePage() {
   return (
     <Container maxWidth={"container.sm"}>
       <VStack spacing={8}>
-        <Heading as={"h1"} size={"2x1"} textAlign={"center"} mb={8}>
-          Criar Novo Produto
+        <Heading as={"h1"}  size={"2xl"} textAlign={"center"} mt={20} mb={8}>
+          Novo Produto
         </Heading>
 
         <Box
           w={"full"}
-          bg={useColorModeValue("white", "gray.800")}
+          bg={useColorModeValue("white", "gray.900")}
           p={6}
           rounded={"lg"}
           shadow={"md"}

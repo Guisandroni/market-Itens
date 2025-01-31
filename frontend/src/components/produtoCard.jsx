@@ -8,37 +8,60 @@ import {
   Text,
   useColorModeValue,
   useToast,
+  useDisclosure,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  Input,
+  VStack,
+  Button,
 } from "@chakra-ui/react";
 import { useProdutoStore } from "../../store/produto";
+import { useState } from "react";
 
 export function ProdutoCard({ produto }) {
-  const bg = useColorModeValue("white", "gray.700");
-  const textColor = useColorModeValue("gray.600", "gray.200");
+  const bg = useColorModeValue("white", "gray.800");
+  const textColor = useColorModeValue("gray.800", "gray.200");
 
-  const toast = useToast();
+  const [updatedProduto, setUpdatedProduto] = useState(produto);
+  const { isOpen, onOpen, onClose } = useDisclosure(); // abrir e fechar model
+  const toast = useToast(); //footer ação ao deletar / criar produto
+  const { deleteProduto, updateProduto } = useProdutoStore();
 
- const {deleteProduto} = useProdutoStore()
- const handleDelete = async (pid) => {
-   const {success,message} = await deleteProduto(pid)
-   if(!success){
-    toast({
-        title: 'Erro',
+  const handleUpdateProduto = async (pid, updatedProduto) => {
+    try {
+        await updateProduto(pid, updatedProduto);
+        onClose()
+    } catch (error) {
+        console.error("Erro ao atualizar", error)
+    }
+    
+  };
+
+  const handleDelete = async (pid) => {
+    const { success, message } = await deleteProduto(pid);
+    if (!success) {
+      toast({
+        title: "Erro",
         description: message,
-        status: 'error',
+        status: "error",
         duration: 9000,
         isClosable: true,
-      })
-   }else {
-    toast({
-        title: 'Success',
+      });
+    } else {
+      toast({
+        title: "Success",
         description: message,
-        status: 'success',
+        status: "success",
         duration: 9000,
         isClosable: true,
-      })
-   }
- }
-
+      });
+    }
+  };
 
   return (
     <Box
@@ -48,7 +71,6 @@ export function ProdutoCard({ produto }) {
       transition="all 0.3s"
       _hover={{ transform: "translateY(-5px)", shadow: "xl" }}
       bg={bg}
-     
     >
       <Image
         src={produto.image}
@@ -64,11 +86,11 @@ export function ProdutoCard({ produto }) {
         </Heading>
 
         <Text fontWeight="bold" fontSize="xl" color={textColor} mb={4}>
-          ${produto.price}
+          R${produto.price}
         </Text>
 
         <HStack spacing={2}>
-          <IconButton icon={<EditIcon />} colorScheme="blue" />
+          <IconButton icon={<EditIcon />} colorScheme="blue" onClick={onOpen} />
 
           <IconButton
             icon={<DeleteIcon />}
@@ -77,6 +99,59 @@ export function ProdutoCard({ produto }) {
           />
         </HStack>
       </Box>
+
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+
+        <ModalContent>
+          <ModalHeader>Atualizar Produtos</ModalHeader>
+
+          <ModalCloseButton />
+
+          <ModalBody>
+            <VStack spacing={4}>
+              <Input
+                placeholder="Nome do Produto"
+                name="name"
+                value={updatedProduto.name}
+                onChange={(e) => setUpdatedProduto({...updatedProduto, name: e.target.value})}
+              />
+              <Input
+                placeholder="Preço"
+                name="price"
+                value={updatedProduto.price}
+                onChange={(e) =>
+                  setUpdatedProduto({ ...updatedProduto, price: e.target.value })
+                }
+              />
+              
+              <Input
+                placeholder="imagem"
+                name="image"
+                value={updatedProduto.image}
+                onChange={(e) =>
+                  setUpdatedProduto({ ...updatedProduto, image: e.target.value })
+                }
+              />
+              
+            </VStack>
+          </ModalBody>
+
+          <ModalFooter>
+            <Button
+            colorScheme="blue"
+              mr={3}
+              onClick={() => handleUpdateProduto(produto._id, updatedProduto)}
+            >
+              Atualizar
+            </Button>
+
+            <Button variant="ghost" onClick={onClose}>
+              Cancelar
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </Box>
   );
 }

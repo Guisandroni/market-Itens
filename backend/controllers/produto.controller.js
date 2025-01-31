@@ -57,7 +57,7 @@ export const putProdutos = async (req,res)=> {
     }
 
     try {
-       const updateProduto = await Produto.findByIdAndDelete(id,produto,{new:true})
+       const updateProduto = await Produto.findByIdAndUpdate(id,produto,{new:true})
        res.status(200).json({success:true, data: updateProduto})
     } catch (error) {
         res.status(500).json({success:false, message:'Produto não encontrado'})
