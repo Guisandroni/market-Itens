@@ -15,9 +15,9 @@ export function Home(){
 
 
     return(
-        <Container>
+        <Container maxW='container.xl' py={12}>
 
-            <VStack>
+            <VStack spacing={8}>
             <Text
                 fontSize={'30'}
                 fontWeight={'bold'}
@@ -29,30 +29,33 @@ export function Home(){
             </Text>
 
             <SimpleGrid
-                columns={{
-                    base:1,
-                    md:2,
-                    lg:3,
-                }}
-                spacing={10}
-                w={'full'}
+               columns={{
+                base:1,
+                md:2,
+                lg:3
+              
+               }}
+            
+               spacing={10}
+               w={'full'}
+
             >
                {produtos.map((produto)=>(
-                <ProdutoCard key={produto._id} produto={produto}/>
+                <ProdutoCard  key={produto._id} produto={produto}/>
                )
             )}
 
             </SimpleGrid>
 
-            <Text fontSize='xl' textAlign={'center'} fontWeight={'bold'} color='gray.500'>
-                Sem produtos
-            </Text>
-
-            <Link to={'/create'}>
-                <Text color='blue.500' _hover={{textDecoration:'underline'}}>
-                    Crie um Produto
-                </Text>
-            </Link>
+            {produtos.length=== 0 &&(
+                <><Text fontSize='xl' textAlign={'center'} fontWeight={'bold'} color='gray.500'>
+                        Sem produtos
+                    </Text><Link to={'/create'}>
+                            <Text color='blue.500' _hover={{ textDecoration: 'underline' }}>
+                                Crie um Produto
+                            </Text>
+                        </Link></>
+            )}
             </VStack>
         </Container>
 

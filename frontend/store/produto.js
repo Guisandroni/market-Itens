@@ -27,6 +27,16 @@ export const useProdutoStore = create ((set) => ({
         const res = await fetch('/api/produtos')
         const data = await res.json()
         set({produtos: data.data })
+    },
+
+    deleteProduto: async (pid) =>{
+        const rest = await fetch(`/api/produtos/${pid}`, {
+            method:'DELETE',
+        })
+        const data = await rest.json()
+        if(!data.success) return {success: false, message: data.message}
+        set (state=> ({produtos: state.produtos.filter(produto => produto._id !==pid)}))
+        return {success: true, message: data.message}
     }
 })
 )
