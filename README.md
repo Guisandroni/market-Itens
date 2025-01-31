@@ -4,6 +4,9 @@
 Este projeto é um sistema completo de gerenciamento de produtos, desenvolvido com **Node.js** e **Express** no backend, e um frontend construído com **React**. Ele oferece uma API RESTful com endpoints para operações CRUD (Create, Read, Update, Delete) de produtos, além de uma interface gráfica para interação com o sistema.
 
 ---
+# Acesse o link do Deploy
+
+[https://marketitens.onrender.com/](https://marketitens.onrender.com/)
 
 ## Índice
 
