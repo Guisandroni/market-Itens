@@ -4,7 +4,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon node ./backend/server.js"
+    "dev": "nodemon node ./backend/server.js",
+    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend",
+    "start": " node backend/server.js"
   },
   "keywords": [],
   "type": "module",
