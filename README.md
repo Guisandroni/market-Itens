@@ -125,4 +125,4 @@ Se você tiver dúvidas, sugestões ou quiser entrar em contato, sinta-se à von
 
 - **GitHub:** [Guisandroni](https://github.com/Guisandroni)
 - **Email:**  gui.sandroni@gmail.com
-- **LinkedIn:** [Seu Nome](https://www.linkedin.com/in/guisandroni) (opcional)
+- **LinkedIn:** [Guisandroni](https://www.linkedin.com/in/guisandroni) (opcional)
