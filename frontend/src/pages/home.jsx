@@ -25,7 +25,7 @@ export function Home(){
                 bgClip={'text'}
                 textAlign={'center'}
             >
-                Produtos de Agora
+                Produtos Criados
             </Text>
 
             <SimpleGrid

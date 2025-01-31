@@ -25,7 +25,7 @@ export function NavBar() {
           fontWeight="extrabold"
           textTransform={"uppercase"}
         >
-        Loja de Produtos 🛒
+        Market Produtos 🛒
         </Text>
         </Link>
         <HStack spacing={2} alignItems={"center"}>
