@@ -68,81 +68,23 @@ No diretório raiz do projeto, instale as dependências do backend:
 npm install
 ```
 
-Em seguida, navegue até o diretório do frontend e instale as dependências:
-
-```bash
-cd frontend
-npm install
-```
-
-### 4. Execute o backend
-
-No diretório raiz, inicie o servidor backend:
+Em seguida, execute um único comando, irá instalar as dependências do backend e frontend:
 
 ```bash
 npm run start
 ```
 
+Caso queira executar a build para deploy
+
+```bash
+npm run build
+```
+### 4.  Acesse o servidor
+
 O servidor estará disponível em:  
 [http://localhost:2000](http://localhost:2000)
 
-### 5. Execute o frontend
-
-No diretório `frontend`, inicie o servidor de desenvolvimento do Vite:
-
-```bash
-npm run dev
-```
-
-O frontend estará disponível em:  
-[http://localhost:3000](http://localhost:3000)
-
 ---
-
-## Endpoints da API
-
-A API oferece os seguintes endpoints para operações CRUD:
-
-### 1. **Criar um produto**
-- **Método:** `POST`
-- **Endpoint:** `/products`
-- **Corpo da Requisição (JSON):**
-  ```json
-  {
-    "name": "Nome do Produto",
-    "description": "Descrição do Produto",
-    "price": 99.99,
-    "quantity": 10
-  }
-  ```
-
-### 2. **Listar todos os produtos**
-- **Método:** `GET`
-- **Endpoint:** `/products`
-
-### 3. **Obter um produto específico**
-- **Método:** `GET`
-- **Endpoint:** `/products/:id`
-
-### 4. **Editar um produto**
-- **Método:** `PUT`
-- **Endpoint:** `/products/:id`
-- **Corpo da Requisição (JSON):**
-  ```json
-  {
-    "name": "Novo Nome",
-    "description": "Nova Descrição",
-    "price": 149.99,
-    "quantity": 5
-  }
-  ```
-
-### 5. **Deletar um produto**
-- **Método:** `DELETE`
-- **Endpoint:** `/products/:id`
-
----
-
 ## Estrutura do Projeto
 
 ```
@@ -181,4 +123,3 @@ Se você tiver dúvidas, sugestões ou quiser entrar em contato, sinta-se à von
 - **GitHub:** [Guisandroni](https://github.com/Guisandroni)
 - **Email:**  gui.sandroni@gmail.com
 - **LinkedIn:** [Seu Nome](https://www.linkedin.com/in/guisandroni) (opcional)
-
